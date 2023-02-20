@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Usuario } from '../../../models/usuario';
 
 @Component({
@@ -15,7 +17,7 @@ export class LoginComponent {
   /**
    *
    */
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private toastr: ToastrService, private router: Router) {
     this.login = this.fb.group({
 
       usuario: ['', Validators.required],
@@ -32,6 +34,15 @@ export class LoginComponent {
     const usuario: Usuario = {
       nombreUsuario: this.login.value.usuario,
       password: this.login.value.password
+    }
+
+    if (usuario.nombreUsuario === 'Leandro') {
+      this.router.navigate(['/dashboard']);
+      this.login.reset();
+    }
+    else {
+      this.toastr.error('Usuario Incorrecto', 'Error !');
+      this.login.reset();
     }
 
     console.log(usuario);
