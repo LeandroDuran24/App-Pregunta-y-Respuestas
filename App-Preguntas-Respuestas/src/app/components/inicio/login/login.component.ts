@@ -12,6 +12,7 @@ import { Usuario } from '../../../models/usuario';
 export class LoginComponent {
 
   login: FormGroup;
+  loading = false;
 
 
   /**
@@ -28,6 +29,8 @@ export class LoginComponent {
   }
 
 
+
+
   log(): void {
 
     console.log(this.login);
@@ -36,16 +39,22 @@ export class LoginComponent {
       password: this.login.value.password
     }
 
-    if (usuario.nombreUsuario === 'Leandro') {
-      this.router.navigate(['/dashboard']);
-      this.login.reset();
-    }
-    else {
-      this.toastr.error('Usuario Incorrecto', 'Error !');
-      this.login.reset();
-    }
+    this.loading=true;
+    setTimeout(() => {
+      if (usuario.nombreUsuario === 'Leandro') {
+        this.router.navigate(['/dashboard']);
+        this.login.reset();
+      }
+      else {
+        this.toastr.error('Usuario Incorrecto', 'Error !');
+        this.login.reset();
+      }
 
+      this.loading=false;
+
+    }, 3000);
     console.log(usuario);
+
   }
 
 }
