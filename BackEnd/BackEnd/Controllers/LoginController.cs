@@ -12,9 +12,11 @@ namespace BackEnd.Controllers
     public class LoginController : ControllerBase
     {
         private readonly ILoginService _loginService;
-        public LoginController(ILoginService loginService)
+        private readonly IConfiguration _configuration;
+        public LoginController(ILoginService loginService,IConfiguration configuration)
         {
             _loginService = loginService;
+            _configuration = configuration;
         }
 
         [HttpPost]
@@ -29,8 +31,9 @@ namespace BackEnd.Controllers
                 {
                     return BadRequest(new { message = "Usuario o Contraseña incorrecta" });
                 }
+                string tokenString = JwtConfigurator.GetToken(user,_configuration);
 
-                return Ok(new { usuario = user.NombreUsuario });
+                return Ok(new { token = tokenString });
             }
             catch (Exception ex)
             {

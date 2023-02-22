@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { subscribeOn } from 'rxjs';
+import { LoginService } from 'src/app/services/login.service';
 import { Usuario } from '../../../models/usuario';
 
 @Component({
@@ -18,7 +20,7 @@ export class LoginComponent {
   /**
    *
    */
-  constructor(private fb: FormBuilder, private toastr: ToastrService, private router: Router) {
+  constructor(private fb: FormBuilder, private toastr: ToastrService, private router: Router, private loginService: LoginService) {
     this.login = this.fb.group({
 
       usuario: ['', Validators.required],
@@ -33,28 +35,31 @@ export class LoginComponent {
 
   log(): void {
 
-    console.log(this.login);
+
     const usuario: Usuario = {
       nombreUsuario: this.login.value.usuario,
       password: this.login.value.password
     }
 
-    this.loading=true;
-    setTimeout(() => {
-      if (usuario.nombreUsuario === 'Leandro') {
-        this.router.navigate(['/dashboard']);
-        this.login.reset();
-      }
-      else {
-        this.toastr.error('Usuario Incorrecto', 'Error !');
-        this.login.reset();
-      }
+    this.loading = true;
 
-      this.loading=false;
+    this.loginService.login(usuario).subscribe(data => {
 
-    }, 3000);
-    console.log(usuario);
+      this.login.reset();
+      this.loading = false;
+      this.loginService.setLocalStorage(data.token);
+      this.router.navigate(['/dashboard']);
+
+    }, error => {
+
+      this.loading = false;
+      this.login.reset();
+      this.toastr.error(error.error.message, 'Error!');
+    })
 
   }
+
+
+
 
 }

@@ -22,4 +22,11 @@ export class UsuarioService {
 
   }
 
+
+
+  changePassword(changePassword:any): Observable<any> {
+
+    return this.http.put(this.myAppUrl + this.myApiUrl + '/CambiarPassword', changePassword);
+  }
+
 }

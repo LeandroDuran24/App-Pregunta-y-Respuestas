@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "r070Jkju2qi2+iWA53RwaJ9gaioNXF4N8/6cCjt9Bg+hIMwd/xAc7Q6QfkpiB6q3CFzOeaDkhjsbcsdTfaH20w==",
+  "dgSpecHash": "JflLKm/cUkZYlo7lYX8nCeR3uWeyeBHXpEwBDQGXDNHH7ZlKHkTBE+k1DeFsbUqM3WpqeV1jLKZMZvhzPwpUvA==",
   "success": true,
   "projectFilePath": "C:\\Users\\leandro duran\\Desktop\\Leandro Duran\\ANGULAR - UDEMY\\APP Pregunta  y Respuesta\\BackEnd\\BackEnd\\BackEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leandro duran\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\leandro duran\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\leandro duran\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\leandro duran\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.8\\microsoft.aspnetcore.authentication.jwtbearer.3.1.8.nupkg.sha512",
     "C:\\Users\\leandro duran\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\leandro duran\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\leandro duran\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",

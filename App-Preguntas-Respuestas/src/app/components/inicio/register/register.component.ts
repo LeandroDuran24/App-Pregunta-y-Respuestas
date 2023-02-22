@@ -38,7 +38,6 @@ export class RegisterComponent {
     this.loading = true;
     this.usuarioService.saveUser(usuario).subscribe(data => {
 
-      console.log(data);
       this.register.reset();
       this.loading = false;
       this.toastr.success('El usuario '+usuario.nombreUsuario + ' fue creado con exito!', 'Usuario Registrado !');
