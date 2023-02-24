@@ -8,9 +8,7 @@ export class Pregunta {
     hide?: boolean;
 
 
-    /**
-     *
-     */
+
     constructor(descripcion: string, listRespuesta: Respuesta[]) {
         this.descripcion = descripcion; 
         this.listRespuestas = listRespuesta;
