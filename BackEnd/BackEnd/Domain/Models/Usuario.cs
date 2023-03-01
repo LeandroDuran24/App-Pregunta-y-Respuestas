@@ -5,6 +5,7 @@ namespace BackEnd.Domain.Models
 {
     public class Usuario
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         [Column(TypeName ="varchar(20)")]
