@@ -10,20 +10,25 @@ export class CuestionarioService {
 
   myAppUrl: string;
   myApiUrl: string;
-  tituloCuestionario:string;
-  descripcionCuestionario:string;
+  tituloCuestionario: string;
+  descripcionCuestionario: string;
 
   constructor(private http: HttpClient) {
 
     this.myAppUrl = 'http://localhost:5105';
-    this.myApiUrl = '/api/Login';
-    this.tituloCuestionario='';
-    this.descripcionCuestionario='';
+    this.myApiUrl = '/api/Cuestionario/';
+    this.tituloCuestionario = '';
+    this.descripcionCuestionario = '';
   }
 
 
   guardarCuestionario(cuestionario: Cuestionario): Observable<any> {
 
     return this.http.post(this.myAppUrl + this.myApiUrl, cuestionario);
+  }
+
+
+  getListCuestionarios(): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl + 'GetCuestionarioByUser');
   }
 }

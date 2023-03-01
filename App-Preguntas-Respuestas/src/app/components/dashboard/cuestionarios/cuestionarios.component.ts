@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { Cuestionario } from 'src/app/models/cuestionarios';
+import { CuestionarioService } from 'src/app/services/cuestionario.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -8,23 +11,42 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class CuestionariosComponent implements OnInit {
 
-  nombreUsuario: string ='';
+  nombreUsuario: string = '';
+  listCuestionarios: Cuestionario[] = [];
+  loading = false;
 
 
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private cuestionarioService: CuestionarioService, private toastr: ToastrService) { }
 
-    /**
-   *
-   */
-    ngOnInit(): void {
+  /**
+ *
+ */
+  ngOnInit(): void {
 
-      this.getNombreUsuario();
-    }
+    this.getNombreUsuario();
+    this.getCuestionarios();
+  }
 
 
-    getNombreUsuario():void{
+  getNombreUsuario(): void {
 
-      this.nombreUsuario = this.loginService.getTokenDecoded().sub;
-    }
+    this.nombreUsuario = this.loginService.getTokenDecoded().sub;
+  }
+
+  getCuestionarios(): void {
+
+    this.loading = true;
+    this.cuestionarioService.getListCuestionarios().subscribe(data => {
+      console.log('data es --' + JSON.stringify(data))
+      this.listCuestionarios = data;
+
+      this.loading = false;
+    }, error => {
+
+      console.log(error);
+      this.toastr.error('Error al obtener los cuestionarios', 'Error !');
+      this.loading = false;
+    })
+  }
 }

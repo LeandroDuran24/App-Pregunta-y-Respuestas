@@ -1,19 +1,19 @@
 import { Pregunta } from "./preguntas";
 
-export class Cuestionario{
+export class Cuestionario {
 
-    id?:number;
-    nombre:string;
-    descripcion:string;
-    fechaCreacion:Date;
-    listPregunta:Pregunta[];
+    id?: number;
+    nombre: string;
+    descripcion: string;
+    fechaCreacion?: Date;
+    listPreguntas: Pregunta[];
 
 
-    constructor(nombre:string,descripcion:string,fechaCreacion:Date,listPreguntas:Pregunta[]) {
-        this.nombre=nombre;
-        this.descripcion=descripcion;
-        this.fechaCreacion=fechaCreacion;
-        this.listPregunta=listPreguntas;
+    constructor(nombre: string, descripcion: string, fechaCreacion: Date, listPreguntas: Pregunta[]) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaCreacion = fechaCreacion;
+        this.listPreguntas = listPreguntas;
 
 
 

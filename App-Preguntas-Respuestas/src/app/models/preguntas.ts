@@ -10,8 +10,9 @@ export class Pregunta {
 
 
     constructor(descripcion: string, listRespuesta: Respuesta[]) {
-        this.descripcion = descripcion; 
+        this.descripcion = descripcion;
         this.listRespuestas = listRespuesta;
+        this.hide = true;
 
     }
 

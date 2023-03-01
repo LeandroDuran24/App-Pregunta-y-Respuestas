@@ -1,9 +1,38 @@
+<div class="text-center">
+    <app-loading *ngIf="loading"></app-loading>
+</div>
 <div class="row">
     <div class="col-lg-6 ">
         <h3 class="text-center">
-            Listado de PReguntas
+            Listado de Preguntas
         </h3>
         <hr>
+
+        <div class="card mb-2" *ngFor="let pregunta of listPreguntas; let i=index">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div style="width:70%">
+                    <h5>{{pregunta.descripcion}}</h5>
+                </div>
+                <div style="width: 30%;">
+                    <button class="btn btn-primary btn-sm ml-1 mt-1"
+                        (click)="pregunta.hide =!pregunta.hide">Mostrar</button>
+                    <button class="btn btn-danger btn-sm ml-1 mt-1" (click)="eliminarPregunta(i)">Eliminar</button>
+                </div>
+            </div>
+            <div class="card-body" [hidden]="pregunta.hide">
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let respuesta of pregunta.listRespuestas"
+                        [ngClass]="{'list-group-item-success': respuesta.esCorrecta==true}">
+                        {{respuesta.descripcion}}
+
+                        <span class="bi bi-check-lg" *ngIf="respuesta.esCorrecta ==true"></span>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
 
 
         <div>
@@ -16,10 +45,11 @@
     <div class="col-lg-6">
         <h3 class="text-center">Nueva Pregunta</h3>
         <hr>
-        <app-nueva-pregunta></app-nueva-pregunta>
+        <app-nueva-pregunta (enviarPregunta)="guardarPregunta($event)"></app-nueva-pregunta>
     </div>
 
 
 </div>
 
-<button class="btn btn-success btn-lg btnFinalizar" [disabled]="listPreguntas.length==0">FINALIZAR CUESTIONARIO</button>
+<button class="btn btn-success btn-lg btnFinalizar" [disabled]="listPreguntas.length==0"
+    (click)="guardarCuestionario()">FINALIZAR CUESTIONARIO</button>

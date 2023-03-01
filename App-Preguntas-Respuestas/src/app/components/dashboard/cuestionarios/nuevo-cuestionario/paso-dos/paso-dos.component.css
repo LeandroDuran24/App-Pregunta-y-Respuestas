@@ -1,7 +1,18 @@
-.btnFinalizar{
+.btnFinalizar {
 
     position: absolute;
     bottom: 0;
     right: 0;
     margin: 10px;
+}
+
+.bi-check-lg {
+    float: right;
+}
+
+
+.list-group-item {
+
+    padding: .20rem;
+    padding-left: 20px;
 }

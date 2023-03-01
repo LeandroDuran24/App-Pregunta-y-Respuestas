@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -16,6 +16,7 @@ export class NuevaPreguntaComponent implements OnInit {
   nuevaPregunta: FormGroup;
   pregunta: Pregunta[] = [];
   rtaCorrecta = 0;
+  @Output() enviarPregunta = new EventEmitter<Pregunta>();
 
 
   constructor(private fb: FormBuilder, private router: Router, private cuestionarioService: CuestionarioService, private toastr: ToastrService) {
@@ -81,14 +82,26 @@ export class NuevaPreguntaComponent implements OnInit {
     //Creamos un array de respuestas
     const arrayRta: Respuesta[] = [];
 
-    arrayRespuestas.forEach((elemento:any) => {
+    arrayRespuestas.forEach((elemento: any, index: any) => {
       const respuesta: Respuesta = new Respuesta(elemento.descripcion, false);
 
+      if (index === this.rtaCorrecta) {
+        respuesta.esCorrecta = true;
+      }
       arrayRta.push(respuesta);
     });
 
-    const pregunta :Pregunta = new Pregunta(descripcion,arrayRta);
+    const pregunta: Pregunta = new Pregunta(descripcion, arrayRta);
+    this.enviarPregunta.emit(pregunta);
+    this.reset();
 
   }
 
+
+  reset(): void {
+    this.rtaCorrecta = 0;
+    this.nuevaPregunta.reset();
+    this.getRespuestas.clear();
+    this.agregarRespuestasPorDefecto();
+  }
 }

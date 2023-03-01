@@ -2,27 +2,31 @@
 
     <div class="form-group input-group-lg">
         <input type="text" class="form-control" placeholder="Ingrese Pregunta" formControlName="titulo">
-        <span class="text-danger" *ngIf="nuevaPregunta.get('titulo')?.hasError('required')&& nuevaPregunta.get('titulo')?.touched">
+        <span class="text-danger"
+            *ngIf="nuevaPregunta.get('titulo')?.hasError('required')&& nuevaPregunta.get('titulo')?.touched">
             La pregunta<strong>es requerida</strong>
         </span>
     </div>
 
 
-    <div formArrayName="respuesta" *ngFor="let item of getRespuestas.controls; let i=index"><!--FormArray-->
+    <div formArrayName="respuesta" *ngFor="let item of getRespuestas.controls; let i=index">
+        <!--FormArray-->
         <div class="input-group " [formGroupName]="i" style="padding-top: 10px;">
             <input formControlName="descripcion" type="text" class="form-control" placeholder="Respuesta {{i+1}}">
 
 
             <div class="input-group-prepend">
                 <div class="input-group-text">
-                    <input type="radio" name="esCorrecta" (change)="setRespuestaValida(i)" value="i" formControlName="esCorrecta">
+                    <input type="radio" name="esCorrecta" (change)="setRespuestaValida(i)" [value]="i"
+                        formControlName="esCorrecta">
                 </div>
             </div>
 
-            <span class="bi bi-trash3 delete-icon" (click)="eliminarRespuestas(i)" ></span>
+            <span class="bi bi-trash3 delete-icon" (click)="eliminarRespuestas(i)"></span>
         </div>
 
-        <span class="text-danger" *ngIf="nuevaPregunta.get('descripcion')?.hasError('required')&& nuevaPregunta.get('descripcion')?.touched">
+        <span class="text-danger"
+            *ngIf="nuevaPregunta.get('descripcion')?.hasError('required')&& nuevaPregunta.get('descripcion')?.touched">
             La repuesta <strong>es requerida</strong>
         </span>
 
@@ -30,8 +34,9 @@
 
 
 
-    <span class="bi bi-plus add-icon"(click)="agregarRespuetas()"></span>
+    <span class="bi bi-plus add-icon" (click)="agregarRespuetas()"></span>
     <br>
     <br>
-    <button class="btn btn-primary float-right" [disabled]="nuevaPregunta.invalid" (click)="agregarPregunta()">Agregar</button>
+    <button class="btn btn-primary float-right" [disabled]="nuevaPregunta.invalid"
+        (click)="agregarPregunta()">Agregar</button>
 </form>
