@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<div class="text-center" style="margin-top: -300px;">
+<div class="text-center" style="margin-top: -30px;">
     <app-loading *ngIf="loading"></app-loading>
 </div>
 
@@ -18,8 +18,8 @@
         <div class="card-body text-center">
             <h4 class="card-title">{{cuestionario.nombre}}</h4>
             <p class="card-text">{{cuestionario.descripcion}}</p>
-            <button class="btn btn-success radius">VER</button>
-            <button class="btn btn-danger radius">ELIMINAR</button>
+            <button class="btn btn-success radius" routerLink="/dashboard/verCuestionario/{{cuestionario.id!}}">VER</button>
+            <button class="btn btn-danger radius" (click)="deleteCuestionario(cuestionario.id!)">ELIMINAR</button>
         </div>
     </div>
 </div>

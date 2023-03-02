@@ -1,0 +1,22 @@
+.container{
+
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn-ing{
+
+    margin: 8px;
+    background-color: #f05f44;
+    border-color: #f05f44;
+    color:white;
+
+}
+
+.row{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

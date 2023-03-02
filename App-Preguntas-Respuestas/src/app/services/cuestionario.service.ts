@@ -28,7 +28,26 @@ export class CuestionarioService {
   }
 
 
-  getListCuestionarios(): Observable<any> {
-    return this.http.get(this.myAppUrl + this.myApiUrl + 'GetCuestionarioByUser');
+  getListCuestionariosByUser(): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl + 'GetListCuestionarioByUser');
   }
+
+  deleteCuestionario(idCuestionario:any):Observable<any>{
+
+    return this.http.delete(this.myAppUrl+this.myApiUrl + idCuestionario);
+  }
+
+  getCuestionario(idCuestionario:number):Observable<any>
+  {
+    return this.http.get(this.myAppUrl+this.myApiUrl + idCuestionario);
+  }
+
+
+  getListCuestionarios():Observable<any>{
+
+    return this.http.get(this.myAppUrl+this.myApiUrl +'GetListCuestionarios') ;
+
+  }
+
+
 }

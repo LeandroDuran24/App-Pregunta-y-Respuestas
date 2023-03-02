@@ -37,10 +37,8 @@ export class CuestionariosComponent implements OnInit {
   getCuestionarios(): void {
 
     this.loading = true;
-    this.cuestionarioService.getListCuestionarios().subscribe(data => {
-      console.log('data es --' + JSON.stringify(data))
+    this.cuestionarioService.getListCuestionariosByUser().subscribe(data => {
       this.listCuestionarios = data;
-
       this.loading = false;
     }, error => {
 
@@ -48,5 +46,29 @@ export class CuestionariosComponent implements OnInit {
       this.toastr.error('Error al obtener los cuestionarios', 'Error !');
       this.loading = false;
     })
+  }
+
+
+  deleteCuestionario(idCuestionario:number):void{
+    if(confirm('Estas seguro que desea eliminar el cuestionario ?'))
+    {
+      this.loading=true;
+      this.cuestionarioService.deleteCuestionario(idCuestionario).subscribe(data=>{
+        this.toastr.success('El cuestionario fue eliminado con exito!','Registro eliminado!');
+        this.getCuestionarios();
+        this.loading=false;
+
+      },error=>{
+        this.toastr.error(error.error.message,'Error !');
+        this.loading=false;
+      })
+    }
+
+  }
+
+
+  getListCuestionarios():void{
+
+    
   }
 }
