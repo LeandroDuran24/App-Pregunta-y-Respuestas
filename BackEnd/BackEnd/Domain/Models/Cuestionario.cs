@@ -22,7 +22,7 @@ namespace BackEnd.Domain.Models
         public int UsuarioId { get; set; }
         public Usuario? Usuario{ get; set; }
 
-        [NotMapped]
+
         public List<Pregunta>? listPreguntas { get; set; }
 
     }

@@ -45,7 +45,7 @@ namespace BackEnd.Controllers
             }
         }
 
-        [Route("GetCuestionarioByUser")]
+        [Route("GetListCuestionarioByUser")]
         [HttpGet]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> GetCuestionarioByUser()
@@ -54,7 +54,7 @@ namespace BackEnd.Controllers
             {
                 var identity = HttpContext.User.Identity as ClaimsIdentity;
                 int idUsuario = JwtConfigurator.GetTokenIdUsuario(identity);
-                var listCuestionario = _cuestionarioService.GetListCuestionarioByUser(idUsuario);
+                var listCuestionario =await _cuestionarioService.GetListCuestionarioByUser(idUsuario);
                 return Ok(listCuestionario);
             }
             catch (Exception ex)
@@ -64,15 +64,15 @@ namespace BackEnd.Controllers
             }
         }
 
-        [Route("GetCuestionarioByUser")]
+        //[Route("GetCuestionariosByUser")]
         [HttpGet("{idCuestionario}")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+       // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Get(int idCuestionario)
-        {
+       {
             try
             {
 
-                var cuestionario = _cuestionarioService.GetCuestionario(idCuestionario);
+                var cuestionario = await _cuestionarioService.GetCuestionario(idCuestionario);
                 return Ok(cuestionario);
             }
             catch (Exception ex)

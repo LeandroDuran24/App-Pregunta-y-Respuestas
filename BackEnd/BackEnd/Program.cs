@@ -18,17 +18,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 /*Conexion*/
-builder.Services.AddDbContext<AplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConexionCasa")));
+builder.Services.AddDbContext<AplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Conexion")));
 
 /*Servicios*/
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<ICuestionarioService, CuestionarioService>();
+builder.Services.AddScoped<IRespuestaCuestionarioService, RespuestaCuestionarioService>();
 
 /*Repository*/
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<ICuestionarioRepository, CuestionarioRepository > ();
+builder.Services.AddScoped<IRespuestaCuestionarioRepository, RespuestaCuestionarioRepository>();
 
 
 /*CORS*/

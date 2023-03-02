@@ -177,3 +177,7 @@ C:\Users\leand\Desktop\Leandro Duran\Cursos\App-Pregunta-y-Respuestas\BackEnd\Ba
 C:\Users\leand\Desktop\Leandro Duran\Cursos\App-Pregunta-y-Respuestas\BackEnd\BackEnd\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\leand\Desktop\Leandro Duran\Cursos\App-Pregunta-y-Respuestas\BackEnd\BackEnd\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\leand\Desktop\Leandro Duran\Cursos\App-Pregunta-y-Respuestas\BackEnd\BackEnd\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\leandro duran\Desktop\Leandro Duran\ANGULAR - UDEMY\APP Pregunta  y Respuesta\BackEnd\BackEnd\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\leandro duran\Desktop\Leandro Duran\ANGULAR - UDEMY\APP Pregunta  y Respuesta\BackEnd\BackEnd\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\leandro duran\Desktop\Leandro Duran\ANGULAR - UDEMY\APP Pregunta  y Respuesta\BackEnd\BackEnd\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\leandro duran\Desktop\Leandro Duran\ANGULAR - UDEMY\APP Pregunta  y Respuesta\BackEnd\BackEnd\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

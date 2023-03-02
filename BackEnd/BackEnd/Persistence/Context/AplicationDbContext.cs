@@ -11,6 +11,10 @@ namespace BackEnd.Persistence.Context
 
         public DbSet<Respuesta> Respuestas { get; set; }
 
+        public DbSet<RespuestaCuestionario> RespuestasCuestionarios { get; set; }
+        public DbSet<RespuestaCuestionarioDetalle> RespuestasCuestionariosDetalle { get; set; }
+
+
         public AplicationDbContext(DbContextOptions<AplicationDbContext>options ):base(options)
         {
                 
