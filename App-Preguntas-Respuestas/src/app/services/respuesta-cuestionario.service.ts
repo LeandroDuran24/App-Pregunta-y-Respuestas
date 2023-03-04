@@ -47,5 +47,11 @@ export class RespuestaCuestionarioService {
   }
 
 
+  getCuestionarioByIdRespuesta(idRespuesta:number):Observable<any>
+  {
+
+    return this.http.get(this.myAppUrl+this.myApiUrl+'GetCuestionarioByIdRespuesta/'+idRespuesta);
+  }
+
 
 }

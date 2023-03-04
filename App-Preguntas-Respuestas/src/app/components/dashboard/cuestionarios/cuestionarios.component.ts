@@ -43,7 +43,7 @@ export class CuestionariosComponent implements OnInit {
     }, error => {
 
       console.log(error);
-      this.toastr.error('Error al obtener los cuestionarios', 'Error !');
+      //this.toastr.error('Error al obtener los cuestionarios', 'Error !');
       this.loading = false;
     })
   }

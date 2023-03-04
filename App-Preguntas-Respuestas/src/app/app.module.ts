@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 //Modulos
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { JwtModule } from "@auth0/angular-jwt";
-
+import { DashboardModule } from './components/dashboard/dashboard.module';
+import { SharedModule } from './shared/shared.module';
+import { ListCuestionariosModule } from './components/inicio/list-cuestionarios/list-cuestionarios.module';
 
 
 //Interceptors
@@ -22,20 +22,8 @@ import { BienvenidaComponent } from './components/inicio/bienvenida/bienvenida.c
 import { LoginComponent } from './components/inicio/login/login.component';
 import { RegisterComponent } from './components/inicio/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { CambiarPasswordComponent } from './components/dashboard/cambiar-password/cambiar-password.component';
-import { CuestionariosComponent } from './components/dashboard/cuestionarios/cuestionarios.component';
 import { NavbarComponent } from './components/dashboard/navbar/navbar.component';
-import { LoadingComponent } from './shared/loading/loading.component';
-import { NuevoCuestionarioComponent } from './components/dashboard/cuestionarios/nuevo-cuestionario/nuevo-cuestionario.component';
-import { PasoUnoComponent } from './components/dashboard/cuestionarios/nuevo-cuestionario/paso-uno/paso-uno.component';
-import { PasoDosComponent } from './components/dashboard/cuestionarios/nuevo-cuestionario/paso-dos/paso-dos.component';
-import { NuevaPreguntaComponent } from './components/dashboard/cuestionarios/nuevo-cuestionario/paso-dos/nueva-pregunta/nueva-pregunta.component';
-import { CuestionarioComponent } from './components/dashboard/cuestionarios/cuestionario/cuestionario.component';
 import { ListCuestionariosComponent } from './components/inicio/list-cuestionarios/list-cuestionarios.component';
-import { IngresarNombreComponent } from './components/inicio/list-cuestionarios/ingresar-nombre/ingresar-nombre.component';
-import { PreguntaComponent } from './components/inicio/list-cuestionarios/pregunta/pregunta.component';
-import { RespuestaCuestionarioComponent } from './components/inicio/list-cuestionarios/respuesta-cuestionario/respuesta-cuestionario.component';
-import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
 
 
 @NgModule({
@@ -46,30 +34,18 @@ import { EstadisticasComponent } from './components/estadisticas/estadisticas.co
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    CambiarPasswordComponent,
-    CuestionariosComponent,
     NavbarComponent,
-    LoadingComponent,
-    NuevoCuestionarioComponent,
-    PasoUnoComponent,
-    PasoDosComponent,
-    NuevaPreguntaComponent,
-    CuestionarioComponent,
-    ListCuestionariosComponent,
-    IngresarNombreComponent,
-    PreguntaComponent,
-    RespuestaCuestionarioComponent,
-    EstadisticasComponent
+    ListCuestionariosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,//servicio,
-    JwtModule //TWT token
+    JwtModule, //TWT token
+    SharedModule
+   
 
 
   ],
