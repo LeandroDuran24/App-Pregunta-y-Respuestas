@@ -1,0 +1,28 @@
+<div class="text-center">
+    <app-loading *ngIf="loading"></app-loading>
+</div>
+
+<table class="table sm table-over" *ngIf="listRespuestaCuestionario.length > 0 && loading ==false">
+    <thead>
+        <th>Participante</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th></th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let cuestionarioRespuesta of listRespuestaCuestionario">
+        <td>{{cuestionarioRespuesta.participante | uppercase}}</td>
+        <td>{{cuestionarioRespuesta.fecha | date:'dd/MM/yyyy'}}</td>
+        <td>{{cuestionarioRespuesta.fecha | date:'HH:mm'}}</td>
+
+        <td>
+            <div class="float-rigth">
+                <span class="bi bi-search search"></span>
+                <span class="bi bi-trash3-fill delete" (click)="eliminarRespuestaCuestionario(cuestionarioRespuesta.id)"></span>
+            </div>
+           
+        </td>
+    </tr>
+    </tbody>
+</table>

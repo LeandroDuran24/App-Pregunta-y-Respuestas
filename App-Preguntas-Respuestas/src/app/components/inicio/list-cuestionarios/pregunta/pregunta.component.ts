@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pregunta } from 'src/app/models/preguntas';
+import { Respuesta } from 'src/app/models/respuesta';
+import { RespuestaCuestionario } from 'src/app/models/RespuestaCuestionario';
+import { RespuestaCuestionarioDetalle } from 'src/app/models/RespuestaCuetrionarioDetalle';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
 import { RespuestaCuestionarioService } from 'src/app/services/respuesta-cuestionario.service';
 
@@ -16,9 +19,11 @@ export class PreguntaComponent implements OnInit {
   listPreguntas: any = {};
   loading = false;
   rtaConfirmada = false;
-  opcionSeleccionada :any;
-  index=0;
-  idRespuestaSeleccionada:number=0;
+  opcionSeleccionada: any;
+  index = 0;
+  idRespuestaSeleccionada: number = 0;
+
+  listRespuestaDetalle: RespuestaCuestionarioDetalle[] = [];
 
   constructor(private respuestaCuestionarioService: RespuestaCuestionarioService, private cuestionarioService: CuestionarioService, private router: Router) {
 
@@ -33,7 +38,7 @@ export class PreguntaComponent implements OnInit {
       return;
     }
     this.getCuestionario();
-    this.respuestaCuestionarioService.respuestas=[];
+    this.respuestaCuestionarioService.respuestas = [];
   }
 
   getCuestionario(): void {
@@ -59,10 +64,10 @@ export class PreguntaComponent implements OnInit {
   }
 
 
-  respuestaSeleccionada(respuesta: any,idRespuesta:number): void {
+  respuestaSeleccionada(respuesta: any, idRespuesta: number): void {
     this.opcionSeleccionada = respuesta;
-    this.rtaConfirmada =true;
-    this.idRespuestaSeleccionada=idRespuesta;
+    this.rtaConfirmada = true;
+    this.idRespuestaSeleccionada = idRespuesta;
 
   }
 
@@ -76,15 +81,59 @@ export class PreguntaComponent implements OnInit {
   }
 
 
-  siguiente():void{
-    this.rtaConfirmada=false;
-    this.index++;
+  siguiente(): void {
+
     this.respuestaCuestionarioService.respuestas.push(this.idRespuestaSeleccionada);
-    this.idRespuestaSeleccionada=0;
+
+    //creamos un objeto respuestaDetalle 
+    const respuestaDetalle: RespuestaCuestionarioDetalle = {
+      respuestaId: this.idRespuestaSeleccionada
+
+    };
 
 
-    if(this.index===this.listPreguntas.length){
-      this.router.navigate(['/inicio/respuestaCuestionario']);
+    //Agregamos objeto al Array
+    this.listRespuestaDetalle.push(respuestaDetalle);
+
+
+    this.rtaConfirmada = false;
+    this.index++;
+    this.idRespuestaSeleccionada = 0;
+
+
+    console.log(this.index);
+    console.log(this.listPreguntas.length);
+
+    if (this.index === this.listPreguntas.length) {
+      //this.router.navigate(['/inicio/respuestaCuestionario']);
+      this.guardarRespuestaCuestionario();
     }
+  }
+
+
+
+  guardarRespuestaCuestionario(): void {
+
+   
+    const rtaCuestionario: RespuestaCuestionario = {
+      cuestionarioId: this.respuestaCuestionarioService.idCuestionario,
+      participante: this.respuestaCuestionarioService.nombreParticipante,
+      listCuestionarioDetalle: this.listRespuestaDetalle
+    };
+
+
+    console.log(rtaCuestionario);
+
+    this.loading = true;
+    this.respuestaCuestionarioService.guardarRespuestaCuestionario(rtaCuestionario).subscribe(data => {
+      this.router.navigate(['/inicio/respuestaCuestionario']);
+      this.loading = false;
+
+    }, error => {
+      this.loading = false;
+      console.log(error);
+
+    })
+
   }
 }

@@ -18,8 +18,12 @@
         <div class="card-body text-center">
             <h4 class="card-title">{{cuestionario.nombre}}</h4>
             <p class="card-text">{{cuestionario.descripcion}}</p>
-            <button class="btn btn-success radius" routerLink="/dashboard/verCuestionario/{{cuestionario.id!}}">VER</button>
-            <button class="btn btn-danger radius" (click)="deleteCuestionario(cuestionario.id!)">ELIMINAR</button>
+            <div class="row">
+                <button class="btn btn-success radius" routerLink="/dashboard/verCuestionario/{{cuestionario.id!}}">VER</button>
+                <button class="btn btn-info radius" routerLink="/dashboard/estadisticas/{{cuestionario.id!}}">EST</button>
+                <button class="btn btn-danger radius" (click)="deleteCuestionario(cuestionario.id!)">ELIMINAR</button>
+            </div>
+            
         </div>
     </div>
 </div>
